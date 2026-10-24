@@ -1,7 +1,7 @@
 import qtawesome as qta
 from PySide6.QtCore import QSize
 
-def apply_professional_icon(button, icon_name, color="#FFFFFF", size=16):
+def icons(button, icon_name, color="#FFFFFF", size=16):
     """Attach a crisp scalable icon without changing existing button behavior."""
     try:
         button.setIcon(qta.icon(icon_name, color=color))
@@ -170,11 +170,11 @@ class ReportsPage(QWidget):
         )
         controls_layout.addWidget(self.report_type)
 
-        refresh_btn = apply_professional_icon(QPushButton('Generate Report'), 'fa5s.chart-line', '#FFFFFF')
+        refresh_btn = icons(QPushButton('Generate Report'), 'fa5s.chart-line', '#FFFFFF')
         refresh_btn.clicked.connect(self.load_report)
         controls_layout.addWidget(refresh_btn)
 
-        print_btn = apply_professional_icon(QPushButton('Export PDF'), 'fa5s.file-pdf', '#FFFFFF')
+        print_btn = icons(QPushButton('Export PDF'), 'fa5s.file-pdf', '#FFFFFF')
         print_btn.clicked.connect(self.export_pdf)
         controls_layout.addWidget(print_btn)
 
@@ -1114,7 +1114,7 @@ class SettingsPage(QWidget):
 
         self.logo_path = QLineEdit()
 
-        browse = apply_professional_icon(QPushButton('Browse'), 'fa5s.folder-open', '#FFFFFF')
+        browse = icons(QPushButton('Browse'), 'fa5s.folder-open', '#FFFFFF')
         browse.clicked.connect(self.browse_logo)
 
         logo_row = QHBoxLayout()
@@ -1160,10 +1160,10 @@ class SettingsPage(QWidget):
 
         buttons = QHBoxLayout()
 
-        save_btn = apply_professional_icon(QPushButton('Save Settings'), 'fa5s.save', '#FFFFFF')
+        save_btn = icons(QPushButton('Save Settings'), 'fa5s.save', '#FFFFFF')
         save_btn.clicked.connect(self.save_settings)
 
-        reset_btn = apply_professional_icon(QPushButton('Reset'), 'fa5s.undo', '#FFFFFF')
+        reset_btn = icons(QPushButton('Reset'), 'fa5s.undo', '#FFFFFF')
         reset_btn.clicked.connect(self.load_settings)
 
         buttons.addWidget(save_btn)
@@ -1558,6 +1558,7 @@ class MainWindow(QMainWindow):
         )
         settings_btn = self.create_nav_button(
             "Settings"
+        )
 
         dashboard_btn.setIcon(qta.icon("fa5s.home", color="#CBD5E1"))
         pos_btn.setIcon(qta.icon("fa5s.cash-register", color="#CBD5E1"))
